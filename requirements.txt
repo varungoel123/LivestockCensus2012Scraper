@@ -1,0 +1,2 @@
+selenium2.47.1
+beautifulsoup4.4.0
