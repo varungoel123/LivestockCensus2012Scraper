@@ -4,4 +4,4 @@ soup = BeautifulSoup(html)
 #print(soup.prettify())
 #soup.find_all('a')
 
-print "sample add"
+print "conflict resolved"
