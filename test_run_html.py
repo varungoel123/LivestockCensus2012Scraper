@@ -1,3 +1,4 @@
+# coding: utf-8
 html = '''<html xmlns="http://www.w3.org/1999/xhtml"><head><title>
 
 </title><link href="css/innerother.css" rel="stylesheet" type="text/css"><link href="css/cssverticalmenu.css" rel="stylesheet" type="text/css">
@@ -1714,7 +1715,7 @@ from bs4 import BeautifulSoup
 soup = BeautifulSoup(html)
 ## refers to the html part where data is stored
 tag_table = soup.find_all("table", style="text-align: left; width: 100%;" )
-
+outputfile = r'./data_samp.csv'
 #tag_table[0]
 import pandas as pd
 from pandas import DataFrame, Series
@@ -1727,7 +1728,7 @@ for i in range(0,len(tag_table)):
     df = pd.DataFrame(data_list) #convert into dataframe
     data_all =data_all.append(df) # append all iterations into final dataframe
     #print data_all
-data_all.to_csv('C:\\Users\\malaniaayushi\\Desktop\\data1.csv', index = False, sep='\t') # write
+data_all.to_csv(outputfile, index = False, sep='\t') # write
       
 
     
