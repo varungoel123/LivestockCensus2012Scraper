@@ -54,21 +54,3 @@ for state in stateVal[1:]:
         driver.find_element_by_id("btnfilter").click()
         time.sleep(30)
 driver.quit()
-
-
-
-   
-#rd_animal
-#rd_bird
-#   ddlname
-#       ddl_House_non
-#           ddlarea
-#               ddlexotic (in case of animals [ select one , cattle and sheep])
-# then click btnfilter
-#time.sleep(5)
-#driver.quit()
-
-
-
-    #time.sleep(5)
-    #driver.quit()
