@@ -1,3 +1,4 @@
+# coding: utf-8
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -6,11 +7,14 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import Select
 import random
 import time
+from bs4 import BeautifulSoup
+import pandas as pd
+from pandas import DataFrame, Series
 path_to_chromedriver = './chromedriver'
 
 
 driver = webdriver.Chrome(executable_path = path_to_chromedriver)
-driver.wait = WebDriverWait(driver, 5)	
+#driver.wait = WebDriverWait(driver, 5)	
 url = r'http://farmer.gov.in/livestockcensus.aspx'
 driver.get(url)
 #try:
@@ -20,12 +24,14 @@ driver.get(url)
 #except TimeoutException:
     #print("Box or Button not found in google.com")
 #num=1
-stateSelect = Select(driver.find_element_by_id("ddlstate"))
-stateVal = []
+
+## create list of all state values
+stateSelect = Select(driver.find_element_by_id("ddlstate")) 
+stateVal = [] 
 for val in stateSelect.options:
     stateVal.append(val.get_attribute('value'))
 
-print stateVal
+
 
 
 
@@ -33,9 +39,10 @@ for val in stateSelect.options:
     stateVal.append(val.get_attribute('value'))
 for state in stateVal[1:]:
     driver.find_element_by_xpath('//*[@id="ddlstate"]/option[@value=' + state + ']').click()
-    time.sleep(5)
+    time.sleep(5) # wait for browser
     districtSelect = Select(driver.find_element_by_id("ddldistrict"))
     districtVal = []
+    data_all=pd.DataFrame()
     for val in districtSelect.options:
         districtVal.append(val.get_attribute('value'))
     for district in districtVal[1:]:
@@ -52,5 +59,25 @@ for state in stateVal[1:]:
         driver.find_element_by_xpath('//*[@id="ddlexotic"]/option[2]').click()
         time.sleep(2)
         driver.find_element_by_id("btnfilter").click()
-        time.sleep(30)
+        time.sleep(10) # important : waits for html to reload
+        soup = BeautifulSoup(driver.page_source,"html.parser")
+        ## refers to the html part where data is stored
+        tag_table = soup.find_all("table", style="text-align: left; width: 100%;" )
+        outputfile = r'./data_samp.csv'
+        #tag_table[0]
+        for i in range(0,len(tag_table)):
+            data_text = tag_table[i].text #extract text from the tag 
+            data_replace = data_text.replace('\n', ',').replace(',,','').replace(' ','')
+            data_string = data_replace.encode('utf-8') #convert unicode into utf-8 string
+            data_list = data_string.split() # convert string into list
+            df = pd.DataFrame(data_list) #convert into dataframe
+            data_all =data_all.append(df) # append all iterations into final dataframe
+            #print data_all
+    data_all.to_csv(outputfile, index = False, sep='\t') # write
+
+        
+
+
+
+
 driver.quit()
