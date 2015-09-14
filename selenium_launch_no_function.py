@@ -27,20 +27,31 @@ driver.get(url) # opens the given url
 
 ## create list of all state values by searching for options and values in the state dropdown
 stateSelect = Select(driver.find_element_by_id("ddlstate")) 
-stateVal = [] 
-for val in stateSelect.options:
-    stateVal.append(val.get_attribute('value'))
+# stateVal = [] 
+# for val in stateSelect.options:
+#     stateVal.append(val.get_attribute('value'))
 
-for state in stateVal[1:]:
+stateVal = {}
+for val in stateSelect.options:
+    stateVal[val.get_attribute('value')] = val.text
+del stateVal['0']
+
+#print(stateVal)
+
+
+
+for state in stateVal.keys():
     driver.find_element_by_xpath('//*[@id="ddlstate"]/option[@value=' + state + ']').click()
     # xpath can be obtained by right clicking element in debug mode and copying xpath
     time.sleep(5) # wait for browser
     districtSelect = Select(driver.find_element_by_id("ddldistrict"))
-    districtVal = []
+    districtVal = {}
     data_all=pd.DataFrame()
     for val in districtSelect.options:
-        districtVal.append(val.get_attribute('value'))
-    for district in districtVal[1:]:
+        districtVal[val.get_attribute('value')] = val.text
+    del districtVal['0']
+
+    for district in districtVal.keys():
         driver.find_element_by_xpath('//*[@id="ddldistrict"]/option[@value=' + district + ']').click()
         time.sleep(3)
         driver.find_element_by_id("rd_animal").click()

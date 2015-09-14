@@ -1,0 +1,15 @@
+exocattle,indicattle
+mec_upto_1to1pt5_year,mic_upto_2_year
+mec_breeding,mic_breeding
+mec_draught,mic_draught
+mec_draught_breeding,mic_draught_breeding
+mec_others,mic_others
+mec_total,mic_total
+fec_upto_1_year,fic_upto_1_year
+fec_1to2pt5_year,fic_upto_1to3_year
+fec_milk,fic_milk
+fec_dry,fic_dry
+fec_not_calved_once,fic_not_calved_once
+fec_others,fic_others
+fec_total,fic_total
+ec_total,ic_total
