@@ -12,9 +12,9 @@ import pandas as pd
 from pandas import DataFrame, Series
 path_to_chromedriver = './chromedriver'
 
-# run selenium chrome driver (opens a new chrome window)
+#run selenium chrome driver (opens a new chrome window)
 driver = webdriver.Chrome(executable_path = path_to_chromedriver)
-driver.wait = WebDriverWait(driver, 5)	
+driver.wait = WebDriverWait(driver, 3)	
 url = r'http://farmer.gov.in/livestockcensus.aspx'
 driver.get(url) # opens the given url
 #try:
@@ -44,13 +44,30 @@ livestock_vars = pd.read_csv(input_path + varfilename)
 #print livestock_vars['exocattle']
 columns = fixed_vars + list(livestock_vars.exocattle)
 col_string = ','.join(columns)
-data_all=pd.DataFrame([col_string])
+
+check_scrape = pd.read_csv("./data_samp.csv")
+dist_scraped = pd.unique(check_scrape.district_code)
+dist_scraped = dist_scraped.astype(int)
+dist_scraped = dist_scraped.astype(str)
+
+i=0
+for d in dist_scraped:
+    print len(d)
+    if len(d) <=2:
+        d = '0'*(3-len(d)) + d
+        dist_scraped[i] = d
+    i+=1
 
 
+
+
+
+#l = "491"
+#print (l in dist_scraped)
 for state in stateVal.keys():
     driver.find_element_by_xpath('//*[@id="ddlstate"]/option[@value=' + state + ']').click()
     # xpath can be obtained by right clicking element in debug mode and copying xpath
-    time.sleep(3) # wait for browser
+    time.sleep(5) # wait for browser
     districtSelect = Select(driver.find_element_by_id("ddldistrict"))
     districtVal = {}
     
@@ -59,9 +76,21 @@ for state in stateVal.keys():
     del districtVal['0']
 
     for district in districtVal.keys():
+        if district in dist_scraped:
+            continue
+        print district + ","+ districtVal[district]
+        data_all =pd.DataFrame()
+        time.sleep(2)
         driver.find_element_by_xpath('//*[@id="ddldistrict"]/option[@value=' + district + ']').click()
         time.sleep(3)
-        driver.find_element_by_id("rd_animal").click()
+        try:
+            anim_clk = driver.wait.until(EC.element_to_be_clickable(
+            (By.ID, "rd_animal")))
+            anim_clk.click()
+        except TimeoutException:
+            #driver.quit()
+            print("Box or Button not found")    
+        #driver.find_element_by_id("rd_animal").click()
         time.sleep(2)
         driver.find_element_by_xpath('//*[@id="ddlname"]/option[2]').click()
         time.sleep(2)
@@ -72,7 +101,10 @@ for state in stateVal.keys():
         driver.find_element_by_xpath('//*[@id="ddlexotic"]/option[2]').click()
         time.sleep(2)
         driver.find_element_by_id("btnfilter").click()
-        time.sleep(10) # important : waits for html to reload
+        #try:
+            #load_results=driver.wait.until(EC.presence_of_element_located(
+            #(By.ID, "dlist_Cattle_E")))
+        time.sleep(6) # important : waits for html to reload
         soup = BeautifulSoup(driver.page_source,"html.parser")
         ## refers to the html part where data is stored
         tag_middlepn14 = soup.find(id="middlepnl4") 
@@ -87,6 +119,7 @@ for state in stateVal.keys():
             tag_data = tag_body.contents[y] 
             data_text = tag_data.text # exhume data from the tag
             data_replace = data_text.replace('\n', ',').replace(',,','').replace(' ','') #replace unwanted space, comma and line break
+            fixed_val = fixed_val.replace('\n', ',').replace(',,','').replace(' ','') #replace unwanted space, comma and line break
             data_string = fixed_val + data_replace.encode('utf-8') #convert unicode into utf-8 string
             data_list = data_string.split() # convert string into list
             df = pd.DataFrame(data_list) 
@@ -95,11 +128,15 @@ for state in stateVal.keys():
             #convert into dataframe
             data_all =data_all.append(df) # append all iterations into final dataframe
             #print len(data_all.columns)   
-        data_all.to_csv(output_path + output_filename,index = False, sep='\t', header = False, mode = "a") # write
+        data_all.to_csv(output_path + output_filename,index = False, sep='\t', header = False, mode = "a")
+        print(district)
+             
+        #except TimeoutException:
+            #driver.quit()
+            #print("Box or Button not found")      
 
-        
+            
 
 
 
 
-driver.quit()
