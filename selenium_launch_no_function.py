@@ -37,7 +37,14 @@ for val in stateSelect.options:
 del stateVal['0']
 
 #print(stateVal)
-
+fixed_vars = ["state_code","state_name","district_code","district_name"]
+varfilename = "tehsil_column_names.csv"
+input_path = r'./'
+livestock_vars = pd.read_csv(input_path + varfilename)
+#print livestock_vars['exocattle']
+columns = fixed_vars + list(livestock_vars.exocattle)
+col_string = ','.join(columns)
+data_all=pd.DataFrame([col_string])
 
 
 for state in stateVal.keys():
@@ -46,7 +53,7 @@ for state in stateVal.keys():
     time.sleep(5) # wait for browser
     districtSelect = Select(driver.find_element_by_id("ddldistrict"))
     districtVal = {}
-    data_all=pd.DataFrame()
+    
     for val in districtSelect.options:
         districtVal[val.get_attribute('value')] = val.text
     del districtVal['0']
@@ -73,17 +80,22 @@ for state in stateVal.keys():
         tag_body = tag_table.contents[1]
         output_path = r'./'
         output_filename = r'data_samp.csv'
+        #fixed_valdict = {}
         #tag_table[0]
+        fixed_val = state + "," + stateVal[state] +"," +district +"," + districtVal[district] + ","
         for y in range(1,len(tag_body)-1): #ignore first tag as it contains column names
             tag_data = tag_body.contents[y] 
             data_text = tag_data.text # exhume data from the tag
             data_replace = data_text.replace('\n', ',').replace(',,','').replace(' ','') #replace unwanted space, comma and line break
-            data_string = data_replace.encode('utf-8') #convert unicode into utf-8 string
+            data_string = fixed_val + data_replace.encode('utf-8') #convert unicode into utf-8 string
             data_list = data_string.split() # convert string into list
-            df = pd.DataFrame(data_list) #convert into dataframe
+            df = pd.DataFrame(data_list) 
+
+            #print len(df.columns) 
+            #convert into dataframe
             data_all =data_all.append(df) # append all iterations into final dataframe
-            #print data_all
-    data_all.to_csv(output_path + output_filename, header = False, index = False, sep='\t') # write
+            #print len(data_all.columns)   
+data_all.to_csv(output_path + output_filename,index = False, sep='\t', header = False) # write
 
         
 
