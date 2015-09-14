@@ -12,11 +12,11 @@ import pandas as pd
 from pandas import DataFrame, Series
 path_to_chromedriver = './chromedriver'
 
-
+# run selenium chrome driver (opens a new chrome window)
 driver = webdriver.Chrome(executable_path = path_to_chromedriver)
 #driver.wait = WebDriverWait(driver, 5)	
 url = r'http://farmer.gov.in/livestockcensus.aspx'
-driver.get(url)
+driver.get(url) # opens the given url
 #try:
     #button = driver.wait.until(EC.presence_of_element_located(
 #        (By.ID, "ddlstate")))
@@ -25,20 +25,15 @@ driver.get(url)
     #print("Box or Button not found in google.com")
 #num=1
 
-## create list of all state values
+## create list of all state values by searching for options and values in the state dropdown
 stateSelect = Select(driver.find_element_by_id("ddlstate")) 
 stateVal = [] 
 for val in stateSelect.options:
     stateVal.append(val.get_attribute('value'))
 
-
-
-
-
-for val in stateSelect.options:
-    stateVal.append(val.get_attribute('value'))
 for state in stateVal[1:]:
     driver.find_element_by_xpath('//*[@id="ddlstate"]/option[@value=' + state + ']').click()
+    # xpath can be obtained by right clicking element in debug mode and copying xpath
     time.sleep(5) # wait for browser
     districtSelect = Select(driver.find_element_by_id("ddldistrict"))
     districtVal = []
@@ -62,18 +57,22 @@ for state in stateVal[1:]:
         time.sleep(10) # important : waits for html to reload
         soup = BeautifulSoup(driver.page_source,"html.parser")
         ## refers to the html part where data is stored
-        tag_table = soup.find_all("table", style="text-align: left; width: 100%;" )
-        outputfile = r'./data_samp.csv'
+        tag_middlepn14 = soup.find(id="middlepnl4") 
+        tag_table = tag_middlepn14.contents[3]
+        tag_body = tag_table.contents[1]
+        output_path = r'./'
+        output_filename = r'data_samp.csv'
         #tag_table[0]
-        for i in range(0,len(tag_table)):
-            data_text = tag_table[i].text #extract text from the tag 
-            data_replace = data_text.replace('\n', ',').replace(',,','').replace(' ','')
+        for y in range(1,len(tag_body)-1): #ignore first tag as it contains column names
+            tag_data = tag_body.contents[y] 
+            data_text = tag_data.text # exhume data from the tag
+            data_replace = data_text.replace('\n', ',').replace(',,','').replace(' ','') #replace unwanted space, comma and line break
             data_string = data_replace.encode('utf-8') #convert unicode into utf-8 string
             data_list = data_string.split() # convert string into list
             df = pd.DataFrame(data_list) #convert into dataframe
             data_all =data_all.append(df) # append all iterations into final dataframe
             #print data_all
-    data_all.to_csv(outputfile, index = False, sep='\t') # write
+    data_all.to_csv(output_path + output_filename, header = False, index = False, sep='\t') # write
 
         
 
