@@ -138,6 +138,15 @@ for state in stateVal.keys():
             #print len(data_all.columns)   
         data_all.to_csv(output_path + output_filename,index = False, sep='\t', header = False, mode = "a")
         print(district)
+        data =  pd.read_csv('C:\Users\malaniaayushi\Desktop\sample.csv')
+        data = pd.DataFrame(data) #converts into dataframe 
+        df = pd.DataFrame(data['tehsil-village_name'].str.split('-').tolist(), columns = ['one','tehsil','district']) #splits tehsil-        village column into multiple columns  
+        df['tehsil']=df['tehsil'].map(lambda x: x.rstrip('Village')) # extracts tehsil name and removes unwanted string
+        df = df.drop('one', axis=1) #drops the unwanted column
+        data = data.drop('tehsil-village_name', axis=1)
+        data =pd.concat([df, data], axis=1)
+        data.to_csv(output_path + output_filename,index = False, sep='\t',mode = "a")
+
              
         #except TimeoutException:
             #driver.quit()
