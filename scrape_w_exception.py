@@ -1,4 +1,4 @@
-# coding: utf-8
+## ----coding: utf-8-----
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -21,7 +21,7 @@ url = r'http://farmer.gov.in/livestockcensus.aspx'
 driver = webdriver.PhantomJS()
 #driver.set_window_size(1120, 550)
 driver.get(url) 
-driver.wait = WebDriverWait(driver, 3)	
+driver.wait = WebDriverWait(driver, 5)	
 
 # opens the given url
 
@@ -44,29 +44,29 @@ for val in stateSelect.options:
     stateVal[val.get_attribute('value')] = val.text
 del stateVal['0']
 
-#print(stateVal)
+print(stateVal)
 fixed_vars = ["state_code","state_name","district_code","district_name","tehsil-village_name"]
 varfilename = "tehsil_column_names.csv"
 input_path = r'./'
 livestock_vars = pd.read_csv(input_path + varfilename)
-#print livestock_vars['exocattle']
+print livestock_vars['exocattle']
 columns = fixed_vars + list(livestock_vars.exocattle)
 col_string = ','.join(columns)
 
-check_scrape = pd.read_csv("./data_samp.csv")
+check_scrape = pd.read_csv("./scraped_data.csv")
 dist_scraped = pd.unique(check_scrape.district_code)
 dist_scraped = dist_scraped.astype(int)
 dist_scraped = dist_scraped.astype(str)
 
 i=0
 for d in dist_scraped:
-    print len(d)
+    #print len(d)
     if len(d) <=2:
         d = '0'*(3-len(d)) + d
         dist_scraped[i] = d
     i+=1
 
-
+#print len(check_scrape.columns)
 
 
 
@@ -124,19 +124,22 @@ for state in stateVal.keys():
         #tag_table[0]
         fixed_val = state + "," + stateVal[state] +"," +district +"," + districtVal[district] + ","
         for y in range(1,len(tag_body)-1): #ignore first tag as it contains column names
-            tag_data = tag_body.contents[y] 
+            tag_data = tag_body.contents[y]
+            #print(tag_data) 
             data_text = tag_data.text.replace(',','') # exhume data from the tag
             data_replace = data_text.replace('\n', ',').replace(',,','').replace(' ','') #replace unwanted space, comma and line break
+            #print(data_replace)
             fixed_val = fixed_val.replace('\n', ',').replace(',,','').replace(' ','') #replace unwanted space, comma and line break
-            data_string = fixed_val + data_replace.encode('utf-8') #convert unicode into utf-8 string
+            #data_string = fixed_val + data_replace.decode('utf-8') #convert unicode into utf-8 string
+            #print(data_string)
             data_list = data_string.split() # convert string into list
             df = pd.DataFrame(data_list) 
-
+            #print df
             #print len(df.columns) 
             #convert into dataframe
             data_all =data_all.append(df) # append all iterations into final dataframe
             #print len(data_all.columns)   
-        data_all.to_csv(output_path + output_filename,index = False, sep='\t', header = False, mode = "a")
+        #data_all.to_csv(output_path + output_filename,index = False, sep='\t', header = False, mode = "a")
         print(district)
         data =  pd.read_csv('C:\Users\malaniaayushi\Desktop\sample.csv')
         data = pd.DataFrame(data) #converts into dataframe 

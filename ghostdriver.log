@@ -1,1 +1,135 @@
-[INFO  - 2015-09-15T06:33:19.917Z] GhostDriver - Main - running on port 54091
+[INFO  - 2015-09-15T08:10:15.626Z] GhostDriver - Main - running on port 62670
+[INFO  - 2015-09-15T08:10:16.327Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.0.0 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2015-09-15T08:10:16.327Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.customHeaders:  - {}
+[INFO  - 2015-09-15T08:10:16.327Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.0.0","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"mac-10.9 (Mavericks)-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2015-09-15T08:10:16.328Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 32a4ad30-5b81-11e5-9683-c3560536d0e4
+[ERROR - 2015-09-15T08:10:17.292Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:17.292Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:18.886Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:18.886Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:24.948Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:24.948Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:30.272Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:30.272Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:35.845Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:35.845Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:41.680Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:41.680Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:47.546Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:10:47.546Z] Session [32a4ad30-5b81-11[INFO  - 2015-09-15T08:10:55.583Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:15:55.584Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:20:55.584Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:25:55.584Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:30:55.584Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:35:55.587Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:40:55.589Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:45:55.591Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:50:55.593Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:55:55.595Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:00:55.597Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:05:55.598Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:10:55.600Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:15:55.609Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:20:55.616Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:25:55.624Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:30:55.628Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+etElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:11:32.111Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[ERROR - 2015-09-15T08:11:38.462Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:11:38.462Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[ERROR - 2015-09-15T08:11:44.428Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:11:44.428Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[ERROR - 2015-09-15T08:11:53.040Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:11:53.040Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[ERROR - 2015-09-15T08:12:08.679Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById(menuids[i]).getElementsByTagName')
+
+  :262 in error
+[ERROR - 2015-09-15T08:12:08.679Z] Session [32a4ad30-5b81-11e5-9683-c3560536d0e4] - page.onError - stack:
+  createcssmenu (http://farmer.gov.in/js/cssverticalmenu.js:6)
+
+  :262 in error
+[INFO  - 2015-09-15T08:15:15.627Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:20:15.632Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:25:15.634Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:30:15.636Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:35:15.637Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:40:15.639Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:45:15.649Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:50:15.655Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T08:55:15.665Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:00:15.674Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:05:15.683Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:10:15.685Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:15:15.687Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:20:15.700Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:25:15.702Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:30:15.702Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:26:51.010Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:14:02.602Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:19:02.611Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:24:02.617Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:29:02.626Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:28:53.633Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:30:13.961Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:30:25.619Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:25:32.629Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:30:32.631Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:06:58.621Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:11:58.627Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:16:58.633Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:21:58.634Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:26:58.644Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:23:45.632Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2015-09-15T09:28:45.640Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
