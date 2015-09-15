@@ -125,7 +125,7 @@ for state in stateVal.keys():
         fixed_val = state + "," + stateVal[state] +"," +district +"," + districtVal[district] + ","
         for y in range(1,len(tag_body)-1): #ignore first tag as it contains column names
             tag_data = tag_body.contents[y] 
-            data_text = tag_data.text # exhume data from the tag
+            data_text = tag_data.text.replace(',','') # exhume data from the tag
             data_replace = data_text.replace('\n', ',').replace(',,','').replace(' ','') #replace unwanted space, comma and line break
             fixed_val = fixed_val.replace('\n', ',').replace(',,','').replace(' ','') #replace unwanted space, comma and line break
             data_string = fixed_val + data_replace.encode('utf-8') #convert unicode into utf-8 string
