@@ -7,16 +7,24 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import Select
 import random
 import time
+import re
+import string
+import urlparse
 from bs4 import BeautifulSoup
 import pandas as pd
 from pandas import DataFrame, Series
 path_to_chromedriver = './chromedriver'
 
 #run selenium chrome driver (opens a new chrome window)
-driver = webdriver.Chrome(executable_path = path_to_chromedriver)
-driver.wait = WebDriverWait(driver, 3)	
+#driver = webdriver.Chrome(executable_path = path_to_chromedriver)
 url = r'http://farmer.gov.in/livestockcensus.aspx'
-driver.get(url) # opens the given url
+driver = webdriver.PhantomJS()
+#driver.set_window_size(1120, 550)
+driver.get(url) 
+driver.wait = WebDriverWait(driver, 3)	
+
+# opens the given url
+
 #try:
     #button = driver.wait.until(EC.presence_of_element_located(
 #        (By.ID, "ddlstate")))
