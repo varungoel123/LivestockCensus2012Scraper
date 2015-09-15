@@ -119,7 +119,7 @@ for state in stateVal.keys():
         tag_table = tag_middlepn14.contents[3]
         tag_body = tag_table.contents[1]
         output_path = r'./'
-        output_filename = r'data_samp.csv'
+        output_filename = r'scraped_data.csv'
         #fixed_valdict = {}
         #tag_table[0]
         fixed_val = state + "," + stateVal[state] +"," +district +"," + districtVal[district] + ","
