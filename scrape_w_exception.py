@@ -1,4 +1,3 @@
-## ----coding: utf-8-----
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -21,7 +20,7 @@ url = r'http://farmer.gov.in/livestockcensus.aspx'
 driver = webdriver.PhantomJS()
 #driver.set_window_size(1120, 550)
 driver.get(url) 
-driver.wait = WebDriverWait(driver, 5)	
+driver.wait = WebDriverWait(driver, 2)	
 
 # opens the given url
 
@@ -44,12 +43,12 @@ for val in stateSelect.options:
     stateVal[val.get_attribute('value')] = val.text
 del stateVal['0']
 
-print(stateVal)
+#print(stateVal)
 fixed_vars = ["state_code","state_name","district_code","district_name","tehsil-village_name"]
 varfilename = "tehsil_column_names.csv"
 input_path = r'./'
 livestock_vars = pd.read_csv(input_path + varfilename)
-print livestock_vars['exocattle']
+#print livestock_vars['exocattle']
 columns = fixed_vars + list(livestock_vars.exocattle)
 col_string = ','.join(columns)
 
@@ -75,7 +74,7 @@ for d in dist_scraped:
 for state in stateVal.keys():
     driver.find_element_by_xpath('//*[@id="ddlstate"]/option[@value=' + state + ']').click()
     # xpath can be obtained by right clicking element in debug mode and copying xpath
-    time.sleep(5) # wait for browser
+    time.sleep(3) # wait for browser
     districtSelect = Select(driver.find_element_by_id("ddldistrict"))
     districtVal = {}
     
@@ -112,7 +111,7 @@ for state in stateVal.keys():
         #try:
             #load_results=driver.wait.until(EC.presence_of_element_located(
             #(By.ID, "dlist_Cattle_E")))
-        time.sleep(6) # important : waits for html to reload
+        time.sleep(4) # important : waits for html to reload
         soup = BeautifulSoup(driver.page_source,"html.parser")
         ## refers to the html part where data is stored
         tag_middlepn14 = soup.find(id="middlepnl4") 
@@ -128,9 +127,14 @@ for state in stateVal.keys():
             #print(tag_data) 
             data_text = tag_data.text.replace(',','') # exhume data from the tag
             data_replace = data_text.replace('\n', ',').replace(',,','').replace(' ','') #replace unwanted space, comma and line break
-            #print(data_replace)
+            
             fixed_val = fixed_val.replace('\n', ',').replace(',,','').replace(' ','') #replace unwanted space, comma and line break
-            #data_string = fixed_val + data_replace.decode('utf-8') #convert unicode into utf-8 string
+            #if type(data_replace) == "str" :
+                #data_string = fixed_val + unicode(data_replace, errors = "ignore").encode('utf-8')
+            #else :
+            data_string = fixed_val + data_replace #convert unicode into utf-8 string
+            #print(data_string) 
+            #print type(data_string)
             #print(data_string)
             data_list = data_string.split() # convert string into list
             df = pd.DataFrame(data_list) 
@@ -141,14 +145,14 @@ for state in stateVal.keys():
             #print len(data_all.columns)   
         #data_all.to_csv(output_path + output_filename,index = False, sep='\t', header = False, mode = "a")
         print(district)
-        data =  pd.read_csv('C:\Users\malaniaayushi\Desktop\sample.csv')
-        data = pd.DataFrame(data) #converts into dataframe 
-        df = pd.DataFrame(data['tehsil-village_name'].str.split('-').tolist(), columns = ['one','tehsil','district']) #splits tehsil-        village column into multiple columns  
-        df['tehsil']=df['tehsil'].map(lambda x: x.rstrip('Village')) # extracts tehsil name and removes unwanted string
-        df = df.drop('one', axis=1) #drops the unwanted column
-        data = data.drop('tehsil-village_name', axis=1)
-        data =pd.concat([df, data], axis=1)
-        data.to_csv(output_path + output_filename,index = False, sep='\t',mode = "a")
+        #data =  pd.read_csv('C:\Users\malaniaayushi\Desktop\sample.csv')
+        #data = pd.DataFrame(data) #converts into dataframe 
+        #df = pd.DataFrame(data['tehsil-village_name'].str.split('-').tolist(), columns = ['one','tehsil','district']) #splits tehsil-        village column into multiple columns  
+        #df['tehsil']=df['tehsil'].map(lambda x: x.rstrip('Village')) # extracts tehsil name and removes unwanted string
+        #df = df.drop('one', axis=1) #drops the unwanted column
+        #data = data.drop('tehsil-village_name', axis=1)
+        #data =pd.concat([df, data], axis=1)
+        data_all.to_csv(output_path + output_filename,index = False, sep='\t',mode = "a", header = False, encoding = 'utf-8')
 
              
         #except TimeoutException:
