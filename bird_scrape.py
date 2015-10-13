@@ -63,7 +63,7 @@ for state in stateVal.keys():
         time.sleep(3)
         driver.find_element_by_id("rd_bird").click() 
         time.sleep(2)
-        driver.find_element_by_xpath('//*[@id="ddlname"]/option[2]').click() #//*[@id="ddlname"]/option[3]
+        driver.find_element_by_xpath('//*[@id="ddlname"]/option[3]').click() #//*[@id="ddlname"]/option[3]//*[@id="ddlname"]/option[3]
         time.sleep(2)
         driver.find_element_by_xpath('//*[@id="ddlHouse_non"]/option[2]').click()
         time.sleep(2)
